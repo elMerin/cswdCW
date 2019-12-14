@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <span id="allTalks">All talks</span>
+        <div class="dropdown">
+          <button class="dropbtn">Browse by </button>
+          <div class="dropdown-content">
+              <span id="bySpeaker">Speaker</span>
+              <span id="bySession">Session</span>
+              <span id="byTag">Tag</span>
+            </div>
+        </div>
+        <span id="interestingTalks">Interesting Talks</span>
+    </div>
+
+
+
+    <h1 id="title"></h1>
+    <ul id="displayList" style="visibility: none"></ul>
+
+    <div id="description" style="visibility: none">
+      Speaker: <b id="speaker"></b><br><br>
+      Description: <b id="talkDesc"></b><br><br>
+      Session: <b id="session"></b><br><br>
+      Time: <b id="time"></b><br><br>
+      Tags: <b id="tags"></b><br><br>
+      Average rating: <b id="averageRating"></b><br><br>
+      <input type="button" id="addTalkBtn" value="Add to interesting talks"> <em id="interestingError"></em>
+    </div>
+    
+    
+
+
+    <div id="rating" style="visibility: none">
+        <h3>Rate the talk</h3>
+        <input type = "radio" name = "ratingRadio" value = "1"> 1<br>
+        <input type = "radio" name = "ratingRadio" value = "2"> 2<br>
+        <input type = "radio" name = "ratingRadio" value = "3"> 3<br>
+        <input type = "radio" name = "ratingRadio" value = "4"> 4<br>
+        <input type = "radio" name = "ratingRadio" value = "5"> 5<br><br>
+        <input type="button" id="ratingSubmit" value="Submit"/>
+    </div>
+    <br>
+    <div id = "rated" style="visibility: none">
+      Thank you for rating!
+    </div>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="javascripts/index.js" type="text/javascript" ></script>
+</body>
+</html>
