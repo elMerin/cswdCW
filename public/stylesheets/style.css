@@ -77,6 +77,10 @@ div.list:hover{
   background: #99cfe0;
 }
 
+#description{
+  width: 700px;
+}
+
 li{
   margin: 1em 0;
 }

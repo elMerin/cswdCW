@@ -2,12 +2,13 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="navbar">
         <span id="allTalks">All talks</span>
         <div class="dropdown">
-          <button class="dropbtn">Browse by </button>
+          <button class="dropbtn">Browse by &nbsp;<i class="fa fa-caret-down"></i></button>
           <div class="dropdown-content">
               <span id="bySpeaker">Speaker</span>
               <span id="bySession">Session</span>
@@ -43,15 +44,13 @@
         <input type = "radio" name = "ratingRadio" value = "3"> 3<br>
         <input type = "radio" name = "ratingRadio" value = "4"> 4<br>
         <input type = "radio" name = "ratingRadio" value = "5"> 5<br><br>
-        <input type="button" id="ratingSubmit" value="Submit"/>
+        <input type="button" id="ratingSubmit" value="Rate"/>
     </div>
     <br>
     <div id = "rated" style="visibility: none">
       Thank you for rating!
     </div>
 
-
-    <script src="/socket.io/socket.io.js"></script>
     <script src="javascripts/index.js" type="text/javascript" ></script>
 </body>
 </html>

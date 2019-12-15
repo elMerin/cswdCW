@@ -1,21 +1,22 @@
-var socket = io.connect('http://localhost:3000');
 var description = document.getElementById("description");
 var displayList = document.getElementById("displayList");
 var rating = document.getElementById("rating");
 var rated = document.getElementById("rated");
 
 
-
+//state variable used with history api to determine website contents
 let state = { 
-    state: "allTalks",
-    speaker: "",
-    session: "",
-    tag: "",
-    talk: ""
+    state: "allTalks", //general state of web app
+    speaker: "", //name of speaker when browsing by speaker
+    session: "", //session when browsing by session
+    tag: "", //tag when browsing by tag
+    talk: "" //id of talk when viewing talk
 };
 
+//render is called whenever state is changed, to change the actual contents of the website
 function render() {
     switch(state.state) {
+        //the get functions return promises, which can be caught
         case "allTalks":
             getTalks().catch(function(error) {
                 console.log("Error loading talks");
@@ -68,6 +69,7 @@ function render() {
       }
 }
 
+//sets initial state as defined above
 (function initialize() {
     window.history.replaceState(state, null, "");
     render(state);
@@ -188,12 +190,12 @@ async function getSessionTalks(session){
             totalRating = totalRating + Number(value.ratings[j]);
         }
         var averageRating = totalRating/value.ratings.length;
-    
+
         if(totalRating==0){
-            div.innerHTML=value.title + ", By: " + value.speaker + ", Session: "+value.session + ", Time: "+ value.time +", No ratings yet.";
+            div.innerHTML=value.title + "<br> By: " + value.speaker + "<br> Session: "+value.session + "<br> Time: "+ value.time + "<br> Tags: " + value.tags + "<br> No ratings yet.";
         }
         else{
-            div.innerHTML=value.title + ", By: " + value.speaker + ", Session: "+value.session + ", Time: "+ value.time +", Average Rating: " + averageRating;
+            div.innerHTML=value.title + "<br> By: " + value.speaker + "<br> Session: "+value.session + "<br> Time: "+ value.time + "<br> Tags: " + value.tags + "<br> Average Rating: " + averageRating;
         }
 
         node.appendChild(div); 
@@ -422,10 +424,10 @@ function displayTalks(json){
         var averageRating = totalRating/value.ratings.length;
     
         if(totalRating==0){
-            div.innerHTML=value.title + "<br> By: " + value.speaker + "<br> Session: "+value.session + "<br> Time: "+ value.time +"<br> No ratings yet.";
+            div.innerHTML=value.title //+ "<br> By: " + value.speaker + "<br> Session: "+value.session + "<br> Time: "+ value.time + "<br> Tags: " + value.tags + "<br> No ratings yet.";
         }
         else{
-            div.innerHTML=value.title + "<br> By: " + value.speaker + "<br> Session: "+value.session + "<br> Time: "+ value.time +"<br> Average Rating: " + averageRating;
+            div.innerHTML=value.title //+ "<br> By: " + value.speaker + "<br> Session: "+value.session + "<br> Time: "+ value.time + "<br> Tags: " + value.tags + "<br> Average Rating: " + averageRating;
         }
 
         
@@ -435,6 +437,7 @@ function displayTalks(json){
 
 }
 
+//Functions that change state and rerender page accordingly.
 
 function talksButton(){
     state.state = "allTalks";
